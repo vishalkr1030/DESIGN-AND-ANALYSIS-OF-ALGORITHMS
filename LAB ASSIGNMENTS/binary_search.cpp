@@ -27,6 +27,6 @@ int main()
     if(check==-1)
     cout<<"ELEMENT DO NOT EXIST IN ARRAY........";
     else
-    cout<<"ELEMENT FOUND AT INDEX : "<<check+2;
+    cout<<"ELEMENT FOUND AT INDEX : "<<check+1;
     return 0;
 }
