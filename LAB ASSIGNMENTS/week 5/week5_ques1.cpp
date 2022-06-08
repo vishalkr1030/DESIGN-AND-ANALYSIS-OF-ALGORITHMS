@@ -1,50 +1,43 @@
 #include <iostream>
+#include<limits.h>
 using namespace std;
 
-void Sel_Sort(int[], int);
+void count_sort(char arr[],int n)
+{
+    int temp[26]={0};
+    for (int i=0;i<n;i++)
+       temp[arr[i]-97]++;
+       
+    int maxi=0;
+    char res='$';
+    for (int i=0;i<26;i++)
+    {
+        if (temp[i]>maxi)
+        {
+            maxi=temp[i];
+            res=i+97;
+        }
+    }
+    if (maxi==1)
+      cout<<"No Duplicate Found"<<endl;
+     else
+    cout<<res<<" - "<<maxi<<endl;
+     
+}
 
 int main()
 {
-    int T;
-    cin >> T;
-    for (int i = 0; i < T; i++)
+    
+    int t;
+    cin>>t;
+    while (t--)
     {
         int n;
-        cin >> n;
-        int A[1000];
-        for (int j = 0; j < n; j++)
-        {
-            cin >> A[j];
-        }
-
-        Sel_Sort(A, n);
+        cin>>n;
+        char arr[n];
+        for (int i=0;i<n;i++)
+            cin>>arr[i];
+        count_sort(arr,n);
     }
-}
-void Sel_Sort(int A[], int n)
-{
-    int comp = 0, swaps = 0;
-    int min, temp = 0;
-
-    for (int i = 0; i < n - 1; i++)
-    {
-        min = i;
-        for (int j = i + 1; j < n; j++)
-        {
-            comp++;
-            if (A[min] > A[j])
-            {
-                min = j;
-            }
-        }
-        swaps++;
-        swap(A[min], A[i]);
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        cout << A[i] << " ";
-    }
-
-    cout << "\ncomparisons = " << comp << endl
-         << "swaps = " << swaps << endl;
+    return 0;
 }
